@@ -11,7 +11,6 @@ namespace ListContact.View
     public partial class ListContact : ContentPage
     {
         private SQLiteAsyncConnection connection;
-        private ObservableCollection<Contact> contacts;
 
         public ListContact()
         {

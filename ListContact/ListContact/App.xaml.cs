@@ -8,7 +8,7 @@ namespace ListContact
 {
     public partial class App : Application
     {
-        public static SeedData Data { get; set; }
+        public static SeedData Data { get; set; } = new SeedData();
 
         public App()
         {
