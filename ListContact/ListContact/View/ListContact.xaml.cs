@@ -1,7 +1,7 @@
-﻿using ListContact.Model;
+﻿using ListContact.Common;
 using ListContact.Persistence;
+using ListContact.ViewModel.ImplementationViewModel;
 using SQLite;
-using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,15 +14,23 @@ namespace ListContact.View
 
         public ListContact()
         {
+            ViewModel = new ContactsViewModel(new PageService());
             InitializeComponent();
             connection = new SQLiteAsyncConnection(BaseConnection.DatabasePath);
         }
 
         protected override async void OnAppearing()
         {
-            var data = await App.Data.GetContacts();
-            contactList.ItemsSource = data;
+            //var data = await App.Data.GetContacts();
+            contactList.ItemsSource = await ViewModel.ShowContacts();
             base.OnAppearing();
+        }
+
+        private ContactsViewModel ViewModel
+        {
+            get => BindingContext as ContactsViewModel;
+
+            set => BindingContext = value;
         }
     }
 }

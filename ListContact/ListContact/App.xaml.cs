@@ -8,11 +8,12 @@ namespace ListContact
 {
     public partial class App : Application
     {
-        public static SeedData Data { get; set; } = new SeedData();
+        public static SeedData Data { get; set; }
 
         public App()
         {
             InitializeComponent();
+            Data = new SeedData();
 
             MainPage = new ListContact.View.ListContact();
         }

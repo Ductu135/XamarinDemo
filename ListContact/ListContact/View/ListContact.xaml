@@ -4,7 +4,8 @@
              x:Class="ListContact.View.ListContact">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="contactList">
+            <ListView x:Name="contactList"
+                      ItemsSource="{Binding Contacts}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Title}" />
