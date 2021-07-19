@@ -26,6 +26,11 @@ namespace ListContact.View
             base.OnAppearing();
         }
 
+        private void contactList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ViewModel.SelectedContactCommand.Execute(e.SelectedItem);
+        }
+
         private ContactsViewModel ViewModel
         {
             get => BindingContext as ContactsViewModel;

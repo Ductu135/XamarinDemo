@@ -25,14 +25,14 @@ namespace ListContact.ViewModel.ImplementationViewModel
             }
         }
 
-        public ICommand AddPlaylistCommand { get; private set; }
-        public ICommand SelectPlaylistCommand { get; private set; }
+        public ICommand AddContactCommand { get; private set; }
+        public ICommand SelectedContactCommand { get; private set; }
 
         public ContactsViewModel(IPageService pageService)
         {
             this.pageService = pageService;
-            AddPlaylistCommand = new Command(AddContacts);
-            //SelectPlaylistCommand = new Command<ContactViewModel>(async vm => await SelectPlaylistAsync(vm));
+            //AddContactCommand = new Command(AddContacts);
+            SelectedContactCommand = new Command<ContactViewModel>(async vm => await SelectContact(vm));
         }
 
         public async Task<ObservableCollection<ContactViewModel>> ShowContacts()
@@ -58,10 +58,12 @@ namespace ListContact.ViewModel.ImplementationViewModel
             //Contacts.Add(new ContactViewModel { Title = newPlaylist });
         }
 
-        private async Task SelectPlaylistAsync(ContactViewModel contact)
+        private async Task SelectContact(ContactViewModel contact)
         {
             if (contact == null)
                 return;
+
+            SelectedContact = null;
 
             await pageService.PushAsycn(new ListContactDetail(contact));
         }

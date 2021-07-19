@@ -5,7 +5,9 @@
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="contactList"
-                      ItemsSource="{Binding Contacts}">
+                      ItemsSource="{Binding Contacts}"
+                      SelectedItem="{Binding SelectContact, Mode=TwoWay}"
+                      ItemSelected="contactList_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Title}" />

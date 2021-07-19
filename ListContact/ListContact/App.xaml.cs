@@ -15,7 +15,7 @@ namespace ListContact
             InitializeComponent();
             Data = new SeedData();
 
-            MainPage = new ListContact.View.ListContact();
+            MainPage = new NavigationPage(new ListContact.View.ListContact());
         }
 
         protected override void OnStart()

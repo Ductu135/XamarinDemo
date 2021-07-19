@@ -13,9 +13,12 @@ namespace ListContact.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListContactDetail : ContentPage
     {
+        private ContactViewModel contactViewModel;
         public ListContactDetail(ContactViewModel contactViewModel)
         {
+            this.contactViewModel = contactViewModel;
             InitializeComponent();
+            title.Text = contactViewModel.Title;
         }
     }
 }
