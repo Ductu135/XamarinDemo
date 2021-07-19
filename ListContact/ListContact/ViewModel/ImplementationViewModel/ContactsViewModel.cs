@@ -27,11 +27,13 @@ namespace ListContact.ViewModel.ImplementationViewModel
 
         public ICommand AddContactCommand { get; private set; }
         public ICommand SelectedContactCommand { get; private set; }
+        public ICommand ShowContactsCommand { get; private set; }
 
         public ContactsViewModel(IPageService pageService)
         {
             this.pageService = pageService;
             //AddContactCommand = new Command(AddContacts);
+            //ShowContactsCommand = new Command<ContactsViewModel>(async vm => await ShowContacts());
             SelectedContactCommand = new Command<ContactViewModel>(async vm => await SelectContact(vm));
         }
 

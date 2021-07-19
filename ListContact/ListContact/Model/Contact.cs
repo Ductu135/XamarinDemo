@@ -3,10 +3,8 @@ using System.ComponentModel;
 
 namespace ListContact.Model
 {
-    public class Contact : INotifyPropertyChanged
+    public class Contact
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
