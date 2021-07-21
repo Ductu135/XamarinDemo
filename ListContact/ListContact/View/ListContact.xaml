@@ -12,7 +12,7 @@
                       ItemSelected="contactList_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Title}" />
+                        <TextCell Text="{Binding Name}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

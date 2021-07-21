@@ -31,7 +31,7 @@ namespace ListContact.ViewModel.ImplementationViewModel
         public ContactsViewModel(IPageService pageService)
         {
             this.pageService = pageService;
-            AddContactCommand = new Command(AddContacts);
+            AddContactCommand = new Command<ContactViewModel>(async vm => await AddContacts(vm));
             SelectedContactCommand = new Command<ContactViewModel>(async vm => await SelectContact(vm));
             Task.Run(async () => await ShowContacts());
         }
@@ -43,7 +43,9 @@ namespace ListContact.ViewModel.ImplementationViewModel
             {
                 Contacts.Add(new ContactViewModel()
                 {
-                    Title = item.Title,
+                    Name = item.Title,
+                    PhoneNumber = item.PhoneNumber,
+                    Email = item.Email,
                     Description = item.Description
                 });
             }
@@ -51,9 +53,17 @@ namespace ListContact.ViewModel.ImplementationViewModel
             return Contacts;
         } 
 
-        private void AddContacts()
+        private async Task AddContacts(ContactViewModel contactViewModel)
         {
-            
+            var newContact = new Contact()
+            {
+                Title = contactViewModel.Name,
+                PhoneNumber = contactViewModel.PhoneNumber,
+                Email = contactViewModel.Email,
+                Description = contactViewModel.Description
+            };
+
+            await connection.InsertAsync(newContact);
         }
 
         private async Task SelectContact(ContactViewModel contact)

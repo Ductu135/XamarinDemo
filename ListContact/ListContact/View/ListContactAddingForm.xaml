@@ -3,10 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListContact.View.ListContactAddingForm">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20">
+            <Label Text="Edit Contact Forms"
+                   HorizontalOptions="Center"
+                   FontSize="20"
+                   TextColor="Blue"
+                   VerticalOptions="Start"/>
+            <Label Text="Name"/>
+            <Entry x:Name="txtName" Text="{Binding Name}" Placeholder="Name"/>
+            <Label Text="Phone number"/>
+            <Entry x:Name="txtPhoneNumber" Text="{Binding PhoneNumber}" Placeholder="Phone number" Keyboard="Telephone"/>
+            <Label Text="Email"/>
+            <Entry x:Name="txtEmail" Text="{Binding Email}" Placeholder="Email" Keyboard="Email"/>
+            <Label Text="Description"/>
+            <Editor x:Name="txtDescription" Text="{Binding Description}" Placeholder="Description"
+                    HeightRequest="70"/>
+            <Button Text="Save"
+                    HorizontalOptions="Center"
+                    TextColor="White"
+                    Command="{Binding AddContactCommand}"
+                    BackgroundColor="#0A7CFF"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
