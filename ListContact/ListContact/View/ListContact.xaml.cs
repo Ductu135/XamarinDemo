@@ -14,16 +14,9 @@ namespace ListContact.View
 
         public ListContact()
         {
+            connection = new SQLiteAsyncConnection(BaseConnection.DatabasePath);
             ViewModel = new ContactsViewModel(new PageService());
             InitializeComponent();
-            connection = new SQLiteAsyncConnection(BaseConnection.DatabasePath);
-        }
-
-        protected override async void OnAppearing()
-        {
-            //var data = await App.Data.GetContacts();
-            contactList.ItemsSource = await ViewModel.ShowContacts();
-            base.OnAppearing();
         }
 
         private void contactList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -36,6 +29,11 @@ namespace ListContact.View
             get => BindingContext as ContactsViewModel;
 
             set => BindingContext = value;
+        }
+
+        private void ToolbarItem_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ListContactAddingForm());
         }
     }
 }

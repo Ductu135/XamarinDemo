@@ -11,7 +11,6 @@
             set
             {
                 SetValue(ref title, value);
-                OnPropertyChanged(nameof(Title));
             }
         }
 
@@ -23,7 +22,6 @@
             set
             {
                 SetValue(ref description, value);
-                OnPropertyChanged(nameof(Description));
             }
         }
     }

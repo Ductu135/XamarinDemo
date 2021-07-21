@@ -16,5 +16,20 @@ namespace ListContact.Common
         {
             return Application.Current.MainPage.Navigation.PushAsync(page);
         }
+
+        public Task PopAsycn()
+        {
+            return Application.Current.MainPage.Navigation.PopAsync();
+        }
+
+        public Task PushModalAsycn(Page page)
+        {
+            return Application.Current.MainPage.Navigation.PushModalAsync(page);
+        }
+
+        public Task PopModalAsycn(Page page)
+        {
+            return Application.Current.MainPage.Navigation.PopModalAsync();
+        }
     }
 }

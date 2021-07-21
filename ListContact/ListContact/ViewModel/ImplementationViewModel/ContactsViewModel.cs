@@ -21,7 +21,6 @@ namespace ListContact.ViewModel.ImplementationViewModel
             set
             {
                 SetValue(ref selectedContact, value);
-                OnPropertyChanged();
             }
         }
 
@@ -32,32 +31,29 @@ namespace ListContact.ViewModel.ImplementationViewModel
         public ContactsViewModel(IPageService pageService)
         {
             this.pageService = pageService;
-            //AddContactCommand = new Command(AddContacts);
-            //ShowContactsCommand = new Command<ContactsViewModel>(async vm => await ShowContacts());
+            AddContactCommand = new Command(AddContacts);
             SelectedContactCommand = new Command<ContactViewModel>(async vm => await SelectContact(vm));
+            Task.Run(async () => await ShowContacts());
         }
 
         public async Task<ObservableCollection<ContactViewModel>> ShowContacts()
         {
             var listContacts = await connection.Table<Contact>().ToListAsync();
-            var ocContacts = new ObservableCollection<ContactViewModel>();
             foreach (var item in listContacts)
             {
-                ocContacts.Add(new ContactViewModel()
+                Contacts.Add(new ContactViewModel()
                 {
                     Title = item.Title,
                     Description = item.Description
                 });
             }
 
-            return ocContacts;
+            return Contacts;
         } 
 
         private void AddContacts()
         {
-            //TODO Add new contact into database
-            //var newPlaylist = "Contact " + (Contacts.Count + 1);
-            //Contacts.Add(new ContactViewModel { Title = newPlaylist });
+            
         }
 
         private async Task SelectContact(ContactViewModel contact)
