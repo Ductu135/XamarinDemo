@@ -8,8 +8,8 @@ namespace ListContact.Persistence
         private const string FilePath = "Mydb.db3";
 
         public const SQLite.SQLiteOpenFlags Flags = SQLite.SQLiteOpenFlags.ReadWrite |
-                                              SQLite.SQLiteOpenFlags.Create |
-                                              SQLite.SQLiteOpenFlags.SharedCache;
+                                                    SQLite.SQLiteOpenFlags.Create |
+                                                    SQLite.SQLiteOpenFlags.SharedCache;
 
         public static string DatabasePath
         {

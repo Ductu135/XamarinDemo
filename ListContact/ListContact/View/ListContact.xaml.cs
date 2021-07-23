@@ -19,6 +19,11 @@ namespace ListContact.View
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
         private void contactList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ViewModel.SelectedContactCommand.Execute(e.SelectedItem);

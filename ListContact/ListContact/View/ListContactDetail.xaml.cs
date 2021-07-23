@@ -18,7 +18,7 @@ namespace ListContact.View
         {
             this.contactViewModel = contactViewModel;
             InitializeComponent();
-            title.Text = contactViewModel.Name;
+            BindingContext = this.contactViewModel;
         }
     }
 }

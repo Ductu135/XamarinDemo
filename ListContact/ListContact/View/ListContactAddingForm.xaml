@@ -10,13 +10,13 @@
                    TextColor="Blue"
                    VerticalOptions="Start"/>
             <Label Text="Name"/>
-            <Entry x:Name="txtName" Text="{Binding Name}" Placeholder="Name"/>
+            <Entry x:Name="txtName" Text="{Binding Name, Mode=TwoWay}" Placeholder="Name"/>
             <Label Text="Phone number"/>
-            <Entry x:Name="txtPhoneNumber" Text="{Binding PhoneNumber}" Placeholder="Phone number" Keyboard="Telephone"/>
+            <Entry x:Name="txtPhoneNumber" Text="{Binding PhoneNumber, Mode=TwoWay}" Placeholder="Phone number" Keyboard="Telephone"/>
             <Label Text="Email"/>
-            <Entry x:Name="txtEmail" Text="{Binding Email}" Placeholder="Email" Keyboard="Email"/>
+            <Entry x:Name="txtEmail" Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" Keyboard="Email"/>
             <Label Text="Description"/>
-            <Editor x:Name="txtDescription" Text="{Binding Description}" Placeholder="Description"
+            <Editor x:Name="txtDescription" Text="{Binding Description, Mode=TwoWay}" Placeholder="Description"
                     HeightRequest="70"/>
             <Button Text="Save"
                     HorizontalOptions="Center"

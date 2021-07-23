@@ -18,8 +18,7 @@ namespace ListContact.View
         public ListContactAddingForm()
         {
             connection = new SQLiteAsyncConnection(BaseConnection.DatabasePath);
-            ViewModel = new ContactsViewModel(new PageService());
-            this.BindingContext = ViewModel;
+            ViewModel = new ContactViewModel(new PageService());
             InitializeComponent();
         }
 
@@ -36,9 +35,9 @@ namespace ListContact.View
         //    ViewModel.SelectedContactCommand.Execute(model);
         //}
 
-        private ContactsViewModel ViewModel
+        private ContactViewModel ViewModel
         {
-            get => BindingContext as ContactsViewModel;
+            get => BindingContext as ContactViewModel;
 
             set => BindingContext = value;
         }
