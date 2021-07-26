@@ -3,8 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListContact.View.ListContactDetail">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Name}" />
+        <StackLayout Padding="20">
+            <Image HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   Source="Images/plus.png"/>
+            <BoxView Color="Gray" WidthRequest ="100" HeightRequest="0.5"/>
+            <Label Text="{Binding Name}"
+                   Padding="0, 10, 0, 10"
+                   FontSize="30"/>
+            <BoxView Color="Gray" WidthRequest ="100" HeightRequest="0.5"/>
+            <StackLayout Orientation="Horizontal"
+                         Padding="0, 10, 0, 10">
+                <Label Text="Number"
+                           
+                       FontSize="18"/>
+                <Label Text="{Binding PhoneNumber}"
+                       HorizontalOptions="EndAndExpand"
+                       FontSize="18"/>
+            </StackLayout>
+            <BoxView Color="Gray" WidthRequest ="100" HeightRequest="0.5"/>
+            <StackLayout Orientation="Horizontal" 
+                         Padding="0, 10, 0, 10">
+                <Label Text="Email"
+                       FontSize="18"/>
+                <Label Text="{Binding Email}"
+                       HorizontalOptions="EndAndExpand"
+                       FontSize="18"/>
+            </StackLayout>
+            <BoxView Color="Gray" WidthRequest ="100" HeightRequest="0.5"/>
+            <StackLayout Orientation="Horizontal" 
+                         Padding="0, 10, 0, 10">
+                <Label Text="Description"
+                       FontSize="18"/>
+                <Label Text="{Binding Description}"
+                       HorizontalOptions="EndAndExpand"
+                       FontSize="18"/>
+            </StackLayout>
+            <Button Text="Edit"
+                    HorizontalOptions="Center"
+                    Clicked="OnClick"
+                    TextColor="White"
+                    BackgroundColor="#0A7CFF"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

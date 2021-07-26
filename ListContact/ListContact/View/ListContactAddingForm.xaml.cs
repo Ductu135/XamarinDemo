@@ -22,19 +22,6 @@ namespace ListContact.View
             InitializeComponent();
         }
 
-        //private void OnAdd(object sender, EventArgs e)
-        //{
-        //    var model = new ContactViewModel()
-        //    {
-        //        Name = txtName.Text,
-        //        PhoneNumber = txtPhoneNumber.Text,
-        //        Email = txtEmail.Text,
-        //        Description = txtDescription.Text
-        //    };
-
-        //    ViewModel.SelectedContactCommand.Execute(model);
-        //}
-
         private ContactViewModel ViewModel
         {
             get => BindingContext as ContactViewModel;

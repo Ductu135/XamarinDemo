@@ -21,6 +21,10 @@ namespace ListContact.View
 
         protected override void OnAppearing()
         {
+            if (ViewModel == null)
+                return;
+
+            ViewModel = new ContactsViewModel(new PageService());
             base.OnAppearing();
         }
 

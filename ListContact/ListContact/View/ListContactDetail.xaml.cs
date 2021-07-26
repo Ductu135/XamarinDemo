@@ -20,5 +20,10 @@ namespace ListContact.View
             InitializeComponent();
             BindingContext = this.contactViewModel;
         }
+
+        private void OnClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,28 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns:local="clr-namespace:ListContact.Extension"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListContact.View.ListContactAddingForm">
+    
+    <local:EditForm NameText="{Binding Name, Mode=TwoWay}" PhoneNumberText="egwebwev" EmailText="ưewevefqwf" DescriptionText="ewebe"/>
+    
     <ContentPage.Content>
-        <StackLayout Padding="20">
-            <Label Text="Edit Contact Forms"
-                   HorizontalOptions="Center"
-                   FontSize="20"
-                   TextColor="Blue"
-                   VerticalOptions="Start"/>
-            <Label Text="Name"/>
-            <Entry x:Name="txtName" Text="{Binding Name, Mode=TwoWay}" Placeholder="Name"/>
-            <Label Text="Phone number"/>
-            <Entry x:Name="txtPhoneNumber" Text="{Binding PhoneNumber, Mode=TwoWay}" Placeholder="Phone number" Keyboard="Telephone"/>
-            <Label Text="Email"/>
-            <Entry x:Name="txtEmail" Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" Keyboard="Email"/>
-            <Label Text="Description"/>
-            <Editor x:Name="txtDescription" Text="{Binding Description, Mode=TwoWay}" Placeholder="Description"
-                    HeightRequest="70"/>
-            <Button Text="Save"
+        <Button Text="Save"
                     HorizontalOptions="Center"
                     TextColor="White"
                     Command="{Binding AddContactCommand}"
                     BackgroundColor="#0A7CFF"/>
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
