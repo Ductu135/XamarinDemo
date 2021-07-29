@@ -11,6 +11,7 @@
                    Source="Images/plus.png"/>
             <BoxView Color="Gray" WidthRequest ="100" HeightRequest="0.5"/>
             <Label Text="{Binding Name}"
+                   x:Name="txtName"
                    Padding="0, 10, 0, 10"
                    FontSize="30"/>
             <BoxView Color="Gray" WidthRequest ="100" HeightRequest="0.5"/>
@@ -20,6 +21,7 @@
                            
                        FontSize="18"/>
                 <Label Text="{Binding PhoneNumber}"
+                       x:Name="txtPhoneNumber"
                        HorizontalOptions="EndAndExpand"
                        FontSize="18"/>
             </StackLayout>
@@ -29,6 +31,7 @@
                 <Label Text="Email"
                        FontSize="18"/>
                 <Label Text="{Binding Email}"
+                       x:Name="txtEmail"
                        HorizontalOptions="EndAndExpand"
                        FontSize="18"/>
             </StackLayout>
@@ -38,6 +41,7 @@
                 <Label Text="Description"
                        FontSize="18"/>
                 <Label Text="{Binding Description}"
+                       x:Name="txtDescription"
                        HorizontalOptions="EndAndExpand"
                        FontSize="18"/>
             </StackLayout>

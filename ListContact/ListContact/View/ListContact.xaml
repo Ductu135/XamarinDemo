@@ -13,7 +13,12 @@
                       ItemSelected="contactList_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" />
+                        <TextCell Text="{Binding Name}" >
+                            <TextCell.ContextActions>
+                                <MenuItem Text="Call" CommandParameter="{Binding .}"/>
+                                <MenuItem Text="Delete" IsDestructive="True" CommandParameter="{Binding .}"/>
+                            </TextCell.ContextActions>
+                        </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

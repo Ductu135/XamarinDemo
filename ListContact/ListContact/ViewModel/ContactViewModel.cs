@@ -1,12 +1,15 @@
 ﻿using ListContact.Common.Interface;
 using ListContact.Model;
+using ListContact.ViewModel;
+using ListContact.ViewModel.Interface;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
+[assembly:Dependency(typeof(ContactViewModel))]
 namespace ListContact.ViewModel
 {
-    public class ContactViewModel : BaseViewModel
+    public class ContactViewModel : BaseViewModel, IContactViewModel
     {
         public int Id { get; set; }
 
@@ -53,9 +56,9 @@ namespace ListContact.ViewModel
             }
         }
 
-        public ICommand AddContactCommand { get; private set; }
+        public ICommand AddContactCommand { get; set; }
+
         private IPageService pageService;
-        public object Alert { get; private set; }
 
         public ContactViewModel(IPageService pageService)
         {
@@ -63,7 +66,7 @@ namespace ListContact.ViewModel
             AddContactCommand = new Command(async () => await AddContacts());
         }
 
-        private async Task AddContacts()
+        public async Task AddContacts()
         {
             var newContact = new Contact()
             {

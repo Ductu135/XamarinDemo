@@ -2,15 +2,8 @@
 <ContentPage xmlns:local="clr-namespace:ListContact.Extension"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding ContactViewModel, Source={StaticResource Locator}}"
              x:Class="ListContact.View.ListContactAddingForm">
     
-    <local:EditForm NameText="{Binding Name, Mode=TwoWay}" PhoneNumberText="egwebwev" EmailText="ưewevefqwf" DescriptionText="ewebe"/>
-    
-    <ContentPage.Content>
-        <Button Text="Save"
-                    HorizontalOptions="Center"
-                    TextColor="White"
-                    Command="{Binding AddContactCommand}"
-                    BackgroundColor="#0A7CFF"/>
-    </ContentPage.Content>
+    <local:EditForm />
 </ContentPage>

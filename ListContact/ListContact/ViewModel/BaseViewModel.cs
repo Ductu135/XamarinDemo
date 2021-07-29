@@ -1,4 +1,5 @@
 ﻿using ListContact.Persistence;
+using ListContact.ViewModel.Interface;
 using SQLite;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace ListContact.ViewModel
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : IBaseViewModel
     {
         protected readonly SQLiteAsyncConnection connection;
         public BaseViewModel()

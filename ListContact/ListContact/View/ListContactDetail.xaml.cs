@@ -1,4 +1,6 @@
-﻿using ListContact.ViewModel;
+﻿using ListContact.Common;
+using ListContact.ViewModel;
+using ListContact.ViewModel.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,15 @@ namespace ListContact.View
 
         private void OnClick(object sender, EventArgs e)
         {
+            IContactViewModel contactViewModel = new ContactViewModel(new PageService())
+            {
+                Name = txtName.Text,
+                PhoneNumber = txtPhoneNumber.Text,
+                Email = txtEmail.Text,
+                Description = txtDescription.Text
+            };
 
+            Navigation.PushAsync(new ListContactUpdatingForm(contactViewModel));
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ListContact.ViewModel;
+using ListContact.ViewModel.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,12 @@ namespace ListContact.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListContactUpdatingForm : ContentPage
     {
-        public ListContactUpdatingForm()
+        private IContactViewModel contactViewModel;
+        public ListContactUpdatingForm(IContactViewModel contactViewModel)
         {
+            this.contactViewModel = contactViewModel;
             InitializeComponent();
+            BindingContext = this.contactViewModel;
         }
     }
 }
