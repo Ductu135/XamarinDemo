@@ -21,7 +21,6 @@
             <StackLayout Orientation="Horizontal"
                          Padding="0, 10, 0, 10">
                 <Label Text="Number"
-                           
                        FontSize="18"/>
                 <Label Text="{Binding PhoneNumber}"
                        x:Name="txtPhoneNumber"

@@ -1,12 +1,5 @@
-﻿using ListContact.Common;
-using ListContact.ViewModel;
-using ListContact.ViewModel.Interface;
+﻿using ListContact.ViewModel.Interface;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,8 +8,9 @@ namespace ListContact.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListContactDetail : ContentPage
     {
-        private ContactViewModel contactViewModel;
-        public ListContactDetail(ContactViewModel contactViewModel)
+        private IContactViewModel contactViewModel;
+
+        public ListContactDetail(IContactViewModel contactViewModel)
         {
             this.contactViewModel = contactViewModel;
             InitializeComponent();
@@ -25,7 +19,7 @@ namespace ListContact.View
 
         private void OnClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ListContactUpdatingForm());
+            Navigation.PushAsync(new ListContactUpdatingForm(contactViewModel));
         }
     }
 }

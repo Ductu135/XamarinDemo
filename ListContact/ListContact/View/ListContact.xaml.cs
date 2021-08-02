@@ -1,10 +1,8 @@
-﻿using ListContact.Common;
-using ListContact.Persistence;
+﻿using ListContact.Persistence;
 using ListContact.ViewModel;
 using ListContact.ViewModel.ImplementationViewModel;
 using SQLite;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,10 +26,9 @@ namespace ListContact.View
                 return;
 
             ViewModel.Contacts = new ObservableCollection<ContactViewModel>();
-            ViewModel.Contacts = await ViewModel.ShowContacts(); 
+            ViewModel.Contacts = await ViewModel.ShowContacts();
             base.OnAppearing();
         }
-
 
         private void contactList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

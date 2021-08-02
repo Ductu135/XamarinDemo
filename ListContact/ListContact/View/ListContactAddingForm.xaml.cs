@@ -12,6 +12,5 @@ namespace ListContact.View
         {
             InitializeComponent();
         }
-
     }
 }

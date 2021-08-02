@@ -1,10 +1,4 @@
-﻿using ListContact.ViewModel;
-using ListContact.ViewModel.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ListContact.ViewModel.Interface;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +9,7 @@ namespace ListContact.View
     public partial class ListContactUpdatingForm : ContentPage
     {
         private IContactViewModel contactViewModel;
+
         public ListContactUpdatingForm(IContactViewModel contactViewModel = null)
         {
             this.contactViewModel = contactViewModel;
