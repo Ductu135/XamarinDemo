@@ -4,6 +4,7 @@ using ListContact.Model;
 using ListContact.View;
 using ListContact.ViewModel.Interface;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -12,7 +13,15 @@ namespace ListContact.ViewModel.ImplementationViewModel
 {
     public class ContactsViewModel : BaseViewModel, IContactsViewModel
     {
-        public ObservableCollection<ContactViewModel> Contacts { get; set; } = new ObservableCollection<ContactViewModel>();
+        private ObservableCollection<ContactViewModel> contacts;
+        public ObservableCollection<ContactViewModel> Contacts 
+        {
+            get => contacts;
+            set
+            {
+                SetValue(ref contacts, value);
+            }
+        }
         private readonly IPageService pageService;
 
         private ContactViewModel selectedContact;
@@ -29,11 +38,11 @@ namespace ListContact.ViewModel.ImplementationViewModel
         public ICommand SelectedContactCommand { get; set; }
         public ICommand ShowContactsCommand { get; set; }
 
-        public ContactsViewModel(IPageService pageService)
+        public ContactsViewModel()
         {
-            this.pageService = pageService;
+            this.pageService = new PageService();
+            SelectedContact = new ContactViewModel();
             SelectedContactCommand = new Command<ContactViewModel>(async vm => await SelectContact(vm));
-            Task.Run(async () => await ShowContacts());
         }
 
         public async Task<ObservableCollection<ContactViewModel>> ShowContacts()
@@ -41,8 +50,9 @@ namespace ListContact.ViewModel.ImplementationViewModel
             var listContacts = await connection.Table<Contact>().ToListAsync();
             foreach (var item in listContacts)
             {
-                Contacts.Add(new ContactViewModel(new PageService())
+                Contacts.Add(new ContactViewModel()
                 {
+                    Id = item.Id,
                     Name = item.Name,
                     PhoneNumber = item.PhoneNumber,
                     Email = item.Email,
@@ -61,6 +71,13 @@ namespace ListContact.ViewModel.ImplementationViewModel
             SelectedContact = null;
 
             await pageService.PushAsycn(new ListContactDetail(contact));
+        }
+
+        public async void DeleteItem(int id)
+        {
+            var model = Contacts.FirstOrDefault(x => x.Id == id);
+            await SelectedContact.DeleteContact(model);
+            Contacts.Remove(model);
         }
     }
 }

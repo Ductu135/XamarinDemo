@@ -10,6 +10,9 @@
                    WidthRequest="150"
                    Source="Images/plus.png"/>
             <BoxView Color="Gray" WidthRequest ="100" HeightRequest="0.5"/>
+            <Label Text="{Binding Id}"
+                   x:Name="txtId"
+                   IsVisible="false"/>
             <Label Text="{Binding Name}"
                    x:Name="txtName"
                    Padding="0, 10, 0, 10"

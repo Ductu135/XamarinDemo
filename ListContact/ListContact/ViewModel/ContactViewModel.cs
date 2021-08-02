@@ -1,7 +1,9 @@
-﻿using ListContact.Common.Interface;
+﻿using ListContact.Common;
+using ListContact.Common.Interface;
 using ListContact.Model;
 using ListContact.ViewModel;
 using ListContact.ViewModel.Interface;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -57,13 +59,15 @@ namespace ListContact.ViewModel
         }
 
         public ICommand AddContactCommand { get; set; }
+        public ICommand UpdateContactCommand { get; set; }
 
         private IPageService pageService;
 
-        public ContactViewModel(IPageService pageService)
+        public ContactViewModel()
         {
-            this.pageService = pageService;
+            this.pageService = new PageService();
             AddContactCommand = new Command(async () => await AddContacts());
+            UpdateContactCommand = new Command<ContactViewModel>(async vm => await UpdateContact(vm));
         }
 
         public async Task AddContacts()
@@ -77,6 +81,26 @@ namespace ListContact.ViewModel
             };
 
             var result = await connection.InsertAsync(newContact);
+
+            if (result == 1)
+                await App.Current.MainPage.DisplayAlert("Successfully", "", "OK");
+
+            await pageService.PopAsycn();
+        }
+
+        public async Task DeleteContact(ContactViewModel contactViewModel)
+        {
+            var model = await connection.FindAsync<Contact>(contactViewModel.Id);
+            var result = await connection.DeleteAsync(model);
+
+            if (result == 1)
+                await App.Current.MainPage.DisplayAlert("Delete successfully", "", "OK");
+        }
+
+        public async Task UpdateContact(ContactViewModel contactViewModel)
+        {
+            var model = await connection.FindAsync<Contact>(contactViewModel.Id);
+            var result = await connection.UpdateAsync(model);
 
             if (result == 1)
                 await App.Current.MainPage.DisplayAlert("Successfully", "", "OK");

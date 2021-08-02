@@ -25,15 +25,7 @@ namespace ListContact.View
 
         private void OnClick(object sender, EventArgs e)
         {
-            IContactViewModel contactViewModel = new ContactViewModel(new PageService())
-            {
-                Name = txtName.Text,
-                PhoneNumber = txtPhoneNumber.Text,
-                Email = txtEmail.Text,
-                Description = txtDescription.Text
-            };
-
-            Navigation.PushAsync(new ListContactUpdatingForm(contactViewModel));
+            Navigation.PushAsync(new ListContactUpdatingForm());
         }
     }
 }

@@ -9,16 +9,18 @@
         <StackLayout>
             <ListView ItemsSource="{Binding Contacts}"
                       IsRefreshing="False"
-                      SelectedItem="{Binding SelectContact, Mode=TwoWay}"
                       ItemSelected="contactList_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" >
-                            <TextCell.ContextActions>
-                                <MenuItem Text="Call" CommandParameter="{Binding .}"/>
-                                <MenuItem Text="Delete" IsDestructive="True" CommandParameter="{Binding .}"/>
-                            </TextCell.ContextActions>
-                        </TextCell>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Id}" IsVisible="true"/>
+                                <Label Text="{Binding Name}" />
+                            </StackLayout>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" IconImageSource="" IsDestructive="True" Clicked="OnDelete" CommandParameter="{Binding Id}"/>
+                            </ViewCell.ContextActions>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

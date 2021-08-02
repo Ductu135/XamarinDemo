@@ -1,8 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns:local="clr-namespace:ListContact.Extension"
+<ContentPage 
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BindingContext="{Binding ContactViewModel, Source={StaticResource Locator}}"
              x:Class="ListContact.View.ListContactUpdatingForm">
-    <local:EditForm />
+
+    <StackLayout Padding="20">
+        <Label Text="Edit Contact Forms"
+                   HorizontalOptions="Center"
+                   FontSize="20"
+                   TextColor="Blue"
+                   VerticalOptions="Start"/>
+        <Label Text="{Binding Id}" IsVisible="false"/>
+        <Label Text="Name"/>
+        <Entry x:Name="txtName" Text="{Binding Name}" Placeholder="Name"/>
+        <Label Text="Phone number"/>
+        <Entry x:Name="txtPhoneNumber" Text="{Binding PhoneNumber}" Placeholder="Phone number" Keyboard="Telephone"/>
+        <Label Text="Email"/>
+        <Entry x:Name="txtEmail" Text="{Binding Email}" Placeholder="Email" Keyboard="Email"/>
+        <Label Text="Description"/>
+        <Editor x:Name="txtDescription" Text="{Binding Description}" Placeholder="Description"
+                HeightRequest="70"/>
+        <Button Text="Save"
+                HorizontalOptions="Center"
+                TextColor="White"
+                Command="{Binding UpdateContactCommand}"
+                BackgroundColor="#0A7CFF"/>
+    </StackLayout>
+    
 </ContentPage>

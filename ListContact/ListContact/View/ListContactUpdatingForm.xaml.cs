@@ -15,7 +15,7 @@ namespace ListContact.View
     public partial class ListContactUpdatingForm : ContentPage
     {
         private IContactViewModel contactViewModel;
-        public ListContactUpdatingForm(IContactViewModel contactViewModel)
+        public ListContactUpdatingForm(IContactViewModel contactViewModel = null)
         {
             this.contactViewModel = contactViewModel;
             InitializeComponent();

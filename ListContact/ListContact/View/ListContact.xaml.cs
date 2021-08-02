@@ -1,7 +1,10 @@
 ﻿using ListContact.Common;
 using ListContact.Persistence;
+using ListContact.ViewModel;
 using ListContact.ViewModel.ImplementationViewModel;
 using SQLite;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,18 +18,20 @@ namespace ListContact.View
         public ListContact()
         {
             connection = new SQLiteAsyncConnection(BaseConnection.DatabasePath);
-            ViewModel = new ContactsViewModel(new PageService());
+            ViewModel = new ContactsViewModel();
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             if (ViewModel == null)
                 return;
 
-            ViewModel = new ContactsViewModel(new PageService());
+            ViewModel.Contacts = new ObservableCollection<ContactViewModel>();
+            ViewModel.Contacts = await ViewModel.ShowContacts(); 
             base.OnAppearing();
         }
+
 
         private void contactList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -43,6 +48,12 @@ namespace ListContact.View
         private void ToolbarItem_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ListContactAddingForm());
+        }
+
+        private void OnDelete(object sender, System.EventArgs e)
+        {
+            var item = (Xamarin.Forms.MenuItem)sender;
+            ViewModel.DeleteItem((int)item.CommandParameter);
         }
     }
 }
